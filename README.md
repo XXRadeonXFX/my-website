@@ -1,0 +1,170 @@
+# 🚀 Beginner-Friendly CI/CD Pipeline for Website Deployment
+
+This repository provides a step-by-step guide and working code/scripts to implement a basic **CI/CD pipeline** that:
+
+* Monitors a GitHub repository for commits
+* Automatically pulls updated files to your server
+* Updates your website content via `rsync`
+* Restarts the Nginx web server to reflect changes
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── check_github.py          # Python script to check for GitHub changes
+├── ci_cd_wrapper.sh         # Wrapper script that ties Python + Bash
+├── update_website.sh        # Bash script to pull, sync, restart nginx
+├── last_commit.txt          # Tracks last GitHub commit SHA
+├── test_cicd.txt            # Optional test file
+```
+
+---
+
+## 🧑‍💻 STEP-BY-STEP SETUP GUIDE
+
+### ✅ STEP 1: Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/my-website.git
+cd my-website
+```
+
+### ✅ STEP 2: Set Up a Linux Server (e.g., Ubuntu EC2)
+
+Make sure you can SSH into your server:
+
+```bash
+ssh ubuntu@your-server-ip
+```
+
+### ✅ STEP 3: Install Required Tools
+
+```bash
+sudo apt update
+sudo apt install nginx python3 python3-pip git -y
+pip3 install requests
+```
+
+### ✅ STEP 4: Configure Nginx Root Directory
+
+Change the default web root:
+
+```bash
+sudo nano /etc/nginx/sites-available/default
+```
+
+Replace:
+
+```nginx
+root /var/www/html;
+```
+
+With:
+
+```nginx
+root /var/www/my-website;
+```
+
+Then restart Nginx:
+
+```bash
+sudo systemctl restart nginx
+```
+
+### ✅ STEP 5: Create Web Directory
+
+```bash
+sudo mkdir -p /var/www/my-website
+sudo chown -R ubuntu:www-data /var/www/my-website
+```
+
+### ✅ STEP 6: Make Scripts Executable
+
+```bash
+chmod +x update_website.sh
+chmod +x ci_cd_wrapper.sh
+```
+
+---
+
+## ⚙️ Script Behavior
+
+### `check_github.py`
+
+* Uses GitHub API to fetch the latest commit
+* Compares it with `last_commit.txt`
+* Exits with `0` if there's a new commit (trigger update)
+
+### `update_website.sh`
+
+* Pulls the latest files from GitHub
+* Syncs them to `/var/www/my-website` using `rsync`
+* Restarts Nginx
+
+### `ci_cd_wrapper.sh`
+
+* Runs the Python script
+* If `check_github.py` exits with code `0`, it runs `update_website.sh`
+
+---
+
+## ⏲️ STEP 7: Schedule Cron Job (Every 5 Minutes)
+
+```bash
+crontab -e
+```
+
+Add this line:
+
+```cron
+*/5 * * * * /home/ubuntu/my-website/ci_cd_wrapper.sh >> /home/ubuntu/my-website/ci_cd.log 2>&1
+```
+
+---
+
+## 🧪 STEP 8: Testing the Pipeline
+
+1. Make a change to `index.html` in your GitHub repo
+2. Wait for 5 minutes or run the wrapper script manually:
+
+```bash
+./ci_cd_wrapper.sh
+```
+
+3. Watch log output:
+
+```bash
+tail -f /home/ubuntu/my-website/ci_cd.log
+```
+
+4. Visit `http://<your-ec2-public-ip>` and verify updates
+
+---
+
+## 🛠️ Useful Commands
+
+```bash
+sudo nano /etc/nginx/sites-available/default
+systemctl status cron
+grep CRON /var/log/syslog
+```
+
+---
+
+## 🙌 Credit
+
+This guide was inspired by Hero Vired CI/CD Assignment and adjusted for beginner DevOps engineers.
+
+---
+
+## 📎 License
+
+MIT License
+
+---
+
+## 🤝 Contributions
+
+PRs welcome if you'd like to extend it with GitHub Webhooks, Docker support, or advanced monitoring!
