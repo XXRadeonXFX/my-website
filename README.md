@@ -25,14 +25,14 @@ This repository provides a step-by-step guide and working code/scripts to implem
 
 ## 🧑‍💻 STEP-BY-STEP SETUP GUIDE
 
-### ✅ STEP 1: Clone the Repository
+### ✅ STEP 1: Launch EC2 and Clone the Repository inside EC2 instance 
 
 ```bash
 git clone https://github.com/XXRadeonXFX/my-website.git
 cd my-website
 ```
 
-### ✅ STEP 2: Set Up a Linux Server (e.g., Ubuntu EC2)
+### ✅ STEP 2: SSH into EC2 Linux Server (e.g., Ubuntu EC2)
 
 Make sure you can SSH into your server:
 
