@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radeonxfx Gaming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: radial-gradient(circle at center, #0e0e0e, #000000);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(to right, #ff004f, #6a00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 1.5rem;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 15px #ff005566;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 25px #ff0055aa;
+            }
+
+            .card img {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 1rem;
+            }
+
+            .card h3 {
+                color: #ff0055;
+                margin-bottom: 0.5rem;
+            }
+
+            .card p {
+                font-size: 0.95rem;
+                color: #bbb;
+            }
+
+        .footer {
+            margin-top: 3rem;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #444;
+        }
+
+        .glow-btn {
+            margin-top: 1rem;
+            background: none;
+            border: 2px solid #ff004f;
+            padding: 10px 25px;
+            font-size: 1rem;
+            color: #ff004f;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .glow-btn:hover {
+                background: #ff004f;
+                color: #fff;
+                box-shadow: 0 0 20px #ff004f88;
+            }
+
+        @media (max-width: 768px) {
+            .section {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>Radeonxfx Gaming</header>
+    <p class="tagline">Power. Precision. Play � across every platform.</p>
+
+    <div class="section">
+        <div class="card">
+            <img src="https://img.icons8.com/ios-filled/100/ff004f/virtual-reality.png" alt="VR Icon" />
+            <h3>Immersive VR</h3>
+            <p>Step into next-gen realism. Powered for ultra-low latency and full motion immersion.</p>
+            <button class="glow-btn">Explore VR</button>
+        </div>
+
+        <div class="card">
+            <img src="https://img.icons8.com/ios-filled/100/ff004f/play-station.png" alt="PlayStation Icon" />
+            <h3>PlayStation</h3>
+            <p>Crush limits with Radeonxfx on PS5. Elite graphics, ultra-HD smoothness, and reactive play.</p>
+            <button class="glow-btn">Play on PS</button>
+        </div>
+
+        <div class="card">
+            <img src="https://img.icons8.com/ios-filled/100/ff004f/xbox.png" alt="Xbox Icon" />
+            <h3>Xbox Power</h3>
+            <p>Dominate with seamless 4K gaming. Unleash raw power with Radeonxfx on Xbox Series X.</p>
+            <button class="glow-btn">Power Up Xbox</button>
+        </div>
+    </div>
+
+    <div class="footer">� 2025 Radeonxfx Gaming � Built for Champions</div>
+</body>
+</html>
+
