@@ -28,27 +28,27 @@ This repository provides a step-by-step guide and working code/scripts to implem
 ### ✅ STEP 1: Launch EC2 and Clone the Repository inside EC2 instance 
 
 ```bash
+ssh ubuntu@your-server-ip
 git clone https://github.com/XXRadeonXFX/my-website.git
 cd my-website
 ```
 
-### ✅ STEP 2: SSH into EC2 Linux Server (e.g., Ubuntu EC2)
-
-Make sure you can SSH into your server:
+### ✅ STEP 2: Install Required Tools
 
 ```bash
-ssh ubuntu@your-server-ip
-```
 
-### ✅ STEP 3: Install Required Tools
-
-```bash
+# Install Nginx
 sudo apt update
-sudo apt install nginx python3 python3-pip git -y
+sudo apt install nginx
+sudo systemctl start nginx
+
+
+# Install Python and Required Packages
+sudo apt install python3 python3-pip
 pip3 install requests
 ```
 
-### ✅ STEP 4: Configure Nginx Root Directory
+### ✅ STEP 3: Configure Nginx Root Directory
 
 Change the default web root:
 
@@ -74,14 +74,14 @@ Then restart Nginx:
 sudo systemctl restart nginx
 ```
 
-### ✅ STEP 5: Create Web Directory ( This step is optional in case cronjob throws error )
+### ✅ STEP 4: Create Web Directory ( This step is optional in case cronjob throws error )
 
 ```bash
 sudo mkdir -p /var/www/my-website/html
 sudo chown -R ubuntu:www-data /var/www/my-website
 ```
 
-### ✅ STEP 6: Make Scripts Executable
+### ✅ STEP 5: Make Scripts Executable
 
 ```bash
 chmod +x update_website.sh
@@ -111,7 +111,7 @@ chmod +x ci_cd_wrapper.sh
 
 ---
 
-## ⏲️ STEP 7: Schedule Cron Job (Every 5 Minutes)
+## ⏲️ STEP 6: Schedule Cron Job (Every 5 Minutes)
 
 ```bash
 crontab -e
@@ -125,7 +125,7 @@ Add this line:
 
 ---
 
-## 🧪 STEP 8: Testing the Pipeline
+## 🧪 STEP 7: Testing the Pipeline
 
 1. Make a change to `html/index.html` in your GitHub repo
 2. Wait for 5 minutes or run the wrapper script manually:
