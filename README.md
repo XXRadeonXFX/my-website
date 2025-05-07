@@ -65,7 +65,7 @@ root /var/www/html;
 With:
 
 ```nginx
-root /var/www/my-website/html;
+root /var/www/my-website;
 ```
 
 Then restart Nginx:
