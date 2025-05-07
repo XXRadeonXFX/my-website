@@ -28,7 +28,7 @@ This repository provides a step-by-step guide and working code/scripts to implem
 ### ✅ STEP 1: Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/my-website.git
+git clone https://github.com/XXRadeonXFX/my-website.git
 cd my-website
 ```
 
