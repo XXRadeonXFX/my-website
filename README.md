@@ -36,7 +36,11 @@ cd my-website
 ### ✅ STEP 2: Install Required Tools
 
 ```bash
+source updater.sh
+```
+ OR run commands manually to update server
 
+```bash
 # Install Nginx
 sudo apt update
 sudo apt install nginx
