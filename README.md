@@ -105,7 +105,7 @@ chmod +x ci_cd_wrapper.sh
 ### `update_website.sh`
 
 * Pulls the latest files from GitHub
-* Syncs `html/` folder content to `/var/www/my-website/html` using `rsync`
+* Syncs `html/` folder content to `/var/www/my-website` using `rsync`
 * Restarts Nginx
 
 ### `ci_cd_wrapper.sh`
