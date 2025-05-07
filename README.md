@@ -17,7 +17,8 @@ This repository provides a step-by-step guide and working code/scripts to implem
 ├── ci_cd_wrapper.sh         # Wrapper script that ties Python + Bash
 ├── update_website.sh        # Bash script to pull, sync, restart nginx
 ├── last_commit.txt          # Tracks last GitHub commit SHA
-├── test_cicd.txt            # Optional test file
+├── html/                    # Folder containing website HTML/CSS content
+│   └── index.html           # Example website home page
 ```
 
 ---
@@ -64,7 +65,7 @@ root /var/www/html;
 With:
 
 ```nginx
-root /var/www/my-website;
+root /var/www/my-website/html;
 ```
 
 Then restart Nginx:
@@ -76,7 +77,7 @@ sudo systemctl restart nginx
 ### ✅ STEP 5: Create Web Directory
 
 ```bash
-sudo mkdir -p /var/www/my-website
+sudo mkdir -p /var/www/my-website/html
 sudo chown -R ubuntu:www-data /var/www/my-website
 ```
 
@@ -100,7 +101,7 @@ chmod +x ci_cd_wrapper.sh
 ### `update_website.sh`
 
 * Pulls the latest files from GitHub
-* Syncs them to `/var/www/my-website` using `rsync`
+* Syncs `html/` folder content to `/var/www/my-website/html` using `rsync`
 * Restarts Nginx
 
 ### `ci_cd_wrapper.sh`
@@ -126,7 +127,7 @@ Add this line:
 
 ## 🧪 STEP 8: Testing the Pipeline
 
-1. Make a change to `index.html` in your GitHub repo
+1. Make a change to `html/index.html` in your GitHub repo
 2. Wait for 5 minutes or run the wrapper script manually:
 
 ```bash
