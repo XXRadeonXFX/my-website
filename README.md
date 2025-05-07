@@ -130,10 +130,6 @@ Add this line:
 1. Make a change to `html/index.html` in your GitHub repo
 2. Wait for 5 minutes or run the wrapper script manually:
 
-```bash
-./ci_cd_wrapper.sh
-```
-
 3. Watch log output:
 
 ```bash
