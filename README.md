@@ -74,7 +74,7 @@ Then restart Nginx:
 sudo systemctl restart nginx
 ```
 
-### ✅ STEP 5: Create Web Directory
+### ✅ STEP 5: Create Web Directory ( This step is optional in case cronjob throws error )
 
 ```bash
 sudo mkdir -p /var/www/my-website/html
